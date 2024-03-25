@@ -19,10 +19,10 @@ const {crc32} = require('crc')
  */
 let databases = {
 	'TIC-80': [
-		'https://tic.computer/play?cat=0&sort=1', // Games
-		'https://tic.computer/play?cat=1&sort=1', // Demos
-		'https://tic.computer/play?cat=3&sort=1',  // Music
-		'https://tic.computer/play?cat=5&sort=1'  // Demoscene
+		'https://tic80.com/play?cat=0&sort=1', // Games
+		'https://tic80.com/play?cat=1&sort=1', // Demos
+		'https://tic80.com/play?cat=3&sort=1',  // Music
+		'https://tic80.com/play?cat=5&sort=1'  // Demoscene
 	]
 }
 
@@ -153,7 +153,7 @@ async function getThumbnail(id, name) {
 	if (!fs.existsSync(destcover)) {
 		//await timeout.set(500)
 		const requestOpts = {
-			url: `https://tic.computer/cart/${id}/cover.gif`,
+			url: `https://tic80.com/cart/${id}/cover.gif`,
 			encoding: null
 		}
 		try {
@@ -188,7 +188,7 @@ async function constructDats() {
 					const id = $('img', element).attr('src').split('/')[2]
 					const cartid = $('.thumbnail a', element).attr('href').split('=')[1]
 					let name = $('h2', element).text()
-					const downloadUrl = `https://tic.computer/cart/${id}/cart.tic`
+					const downloadUrl = `https://tic80.com/cart/${id}/cart.tic`
 					console.log(name)
 					const description = $('.text-muted', element).first().text()
 					let developer = $('.text-muted', element).last().text()
@@ -223,7 +223,7 @@ async function constructDats() {
 						download: downloadUrl,
 						md5: md5,
 						cartid: cartid,
-						homepage: cartid ? "https://tic.computer/play?cart=" + cartid : '',
+						homepage: cartid ? "https://tic80.com/play?cart=" + cartid : '',
 						description: description,
 						developer: developer
 					}
